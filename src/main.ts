@@ -7,6 +7,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  //app.setGlobalPrefix('api');
+  //Determina prefixul global pentru toate rutele
+  //Ex: http://localhost:3000/api/user/all
+
   await app.listen(4200);
 }
 bootstrap();

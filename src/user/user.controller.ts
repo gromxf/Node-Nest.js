@@ -7,6 +7,10 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
+  // @Query('name') name: string
+  //returneaza toti utilizatorii cu numele dat dupa ?name=value
+  //query params din URL (?param=value)
+
   @Get('all')
   findAll() {
     return this.userService.findAll();

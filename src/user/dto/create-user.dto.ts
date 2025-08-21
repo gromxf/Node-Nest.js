@@ -1,9 +1,17 @@
 import {
     ArrayNotEmpty,
     IsArray,
+    IsEnum,
     IsNotEmpty, IsString,
     Length
 } from "class-validator";
+import { StartWith } from "src/Decorators/start-witch.decorators";
+
+export enum UserTags {
+    WORK = 'work',
+    JOB = 'job',
+    PERSONAL = 'personal',
+};
 
 export class CreateUserDto {
     @IsString({ message: 'Name must be a string' })
@@ -20,6 +28,6 @@ export class CreateUserDto {
 
     @IsArray()
     @ArrayNotEmpty({ message: 'Tags are required' })
-    @IsString({ each: true, message: 'Each tag must be a string' })
-    tags: string[];
+    @IsEnum(UserTags, { each: true, message: 'Each tag must be a valid enum value' })
+    tags: UserTags[];
 }
